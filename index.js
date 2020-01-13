@@ -32,9 +32,10 @@ const routes = {
 /// get ///
 server.get (routes.root, (ri, ro) => {
   console.log (`>>> root .get <<<`)
-  ro.json ({
-    message : 'hello world',
-  })
+  ro
+    .json ({
+      message : 'hello world',
+    })
 })
 
 /*******************
