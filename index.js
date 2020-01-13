@@ -50,7 +50,7 @@ server.get (routes.hubs, (dn, ro) => {
         .json (data)
     })
     .catch ((error) => {
-      console.log (`>>> get hubs .get .find .catch <<<`)
+      console.log (`>>> hubs .get .find .catch <<<`)
       console.log (error)
       ro
         .status (500)
