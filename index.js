@@ -95,10 +95,10 @@ server.get (routes.hubs.GET (), (dn, ro) => {
 /// delete ///
 server.delete (routes.hubs.DELETE (':id'), (ri, ro) => {
   console.log (`>>> hubs .delete <<<`)
-  const hubID = ri.params.id
+  const hubId = ri.params.id
 
   hubsDB
-    .remove (hubData)
+    .remove (hubId)
     .then ((deletedHub) => {
       console.log (`>>> hubs .delete .delete .then <<<`)
       ro
