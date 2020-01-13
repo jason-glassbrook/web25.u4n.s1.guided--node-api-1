@@ -50,11 +50,11 @@ server.post (routes.hubs.POST (), (ri, ro) => {
   // ...but in practice, we would validate it
   hubsDB
     .add (hubData)
-    .then ((data) => {
+    .then ((createdHub) => {
       console.log (`>>> hubs .post .add .then <<<`)
       ro
         .status (201)
-        .json (data)
+        .json (createdHub)
     })
     .catch ((error) => {
       console.log (`>>> hubs .post .add .catch <<<`)
@@ -72,11 +72,11 @@ server.get (routes.hubs.GET (), (dn, ro) => {
   console.log (`>>> hubs .get <<<`)
   hubsDB
     .find () // returns a promise
-    .then ((data) => {
+    .then ((foundHubs) => {
       console.log (`>>> hubs .get .find .then <<<`)
       ro
         .status (200)
-        .json (data)
+        .json (foundHubs)
     })
     .catch ((error) => {
       console.log (`>>> hubs .get .find .catch <<<`)
