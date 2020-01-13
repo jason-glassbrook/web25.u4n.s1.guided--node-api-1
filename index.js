@@ -8,6 +8,7 @@ const hubs = require ('./data/hubs-model.js')
 /// server ///
 const port = 5555
 const server = express ()
+server.use (express.json ())
 
 /***************************************
   define requests
@@ -36,7 +37,29 @@ server.get (routes.root, (ri, ro) => {
 *******************/
 
 /// create ///
-
+server.post (routes.hubs, (ri, ro) => {
+  console.log (`>>> hubs .post <<<`)
+  const hubData = ri.body
+  // for now, we will trust the data
+  // ...but in practice, we would validate it
+  hubs
+    .add (hubData)
+    .then ((data) => {
+      console.log (`>>> hubs .post .add .then <<<`)
+      ro
+        .status (201)
+        .json (data)
+    })
+    .catch ((error) => {
+      console.log (`>>> hubs .post .add .catch <<<`)
+      console.log (error)
+      ro
+        .status (500)
+        .json ({
+          error : `sorry, we ran into an error when posting hubs`,
+        })
+    })
+})
 
 /// read ///
 server.get (routes.hubs, (dn, ro) => {
