@@ -3,7 +3,7 @@
 const express = require ('express') // CommonJS modules
 
 /// database ///
-const hubs = require ('./data/hubs-model.js')
+const hubsDB = require ('./data/hubs-model.js')
 
 /// server ///
 const port = 5555
@@ -47,7 +47,7 @@ server.post (routes.hubs.POST (), (ri, ro) => {
   const hubData = ri.body
   // for now, we will trust the data
   // ...but in practice, we would validate it
-  hubs
+  hubsDB
     .add (hubData)
     .then ((data) => {
       console.log (`>>> hubs .post .add .then <<<`)
@@ -69,7 +69,7 @@ server.post (routes.hubs.POST (), (ri, ro) => {
 /// read ///
 server.get (routes.hubs.GET (), (dn, ro) => {
   console.log (`>>> hubs .get <<<`)
-  hubs
+  hubsDB
     .find () // returns a promise
     .then ((data) => {
       console.log (`>>> hubs .get .find .then <<<`)
@@ -93,6 +93,7 @@ server.get (routes.hubs.GET (), (dn, ro) => {
 
 /// delete ///
 
+  hubsDB
 
 /***************************************
   run server
