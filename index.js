@@ -100,13 +100,13 @@ server.delete (routes.hubs.DELETE (':id'), (ri, ro) => {
   hubsDB
     .remove (hubId)
     .then ((deletedHub) => {
-      console.log (`>>> hubs .delete .delete .then <<<`)
+      console.log (`>>> hubs .delete .remove .then <<<`)
       ro
         .status (201)
         .json (deletedHub)
     })
     .catch ((error) => {
-      console.log (`>>> hubs .delete .delete .catch <<<`)
+      console.log (`>>> hubs .delete .remove .catch <<<`)
       console.log (error)
       ro
         .status (500)
