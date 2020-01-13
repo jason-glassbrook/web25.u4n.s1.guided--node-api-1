@@ -1,12 +1,36 @@
-// import express from 'express'
-const express = require ('express')
+/// external modules ///
+// import express from 'express' // ES2015 modules
+const express = require ('express') // CommonJS modules
 
+/// server ///
 const port = 5555
 const server = express ()
 
-server.get ('/', (request, response) => {
+/***************************************
+  define requests
+***************************************/
+
+const routes = {
+  root : '/',
+  home : '/api',
+}
+
+/*******************
+  root
+*******************/
+
+/// get ///
+server.get (routes.root, (dn, up) => {
+  console.log (`>>> root .get <<<`)
+  up.json ({
+    message : 'hello world',
+  })
+})
 
 })
+/***************************************
+  run server
+***************************************/
 
 server.listen (port, () => {
   console.log (`it's alive!`)
