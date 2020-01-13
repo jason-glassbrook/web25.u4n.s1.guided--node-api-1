@@ -39,7 +39,26 @@ server.get (routes.root, (dn, up) => {
 
 
 /// read ///
-
+server.get (routes.hubs, (dn, up) => {
+  console.log (`>>> hubs .get <<<`)
+  hubs
+    .find () // returns a promise
+    .then ((data) => {
+      console.log (`>>> hubs .get .find .then <<<`)
+      up
+        .status (200)
+        .json (data)
+    })
+    .catch ((error) => {
+      console.log (`>>> get hubs .get .find .catch <<<`)
+      console.log (error)
+      up
+        .status (500)
+        .json ({
+          error : `sorry, we ran into an error when getting hubs`,
+        })
+    })
+})
 
 /// update ///
 
