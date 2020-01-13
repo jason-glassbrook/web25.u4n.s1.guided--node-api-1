@@ -68,7 +68,7 @@ server.post (routes.hubs.POST (), (ri, ro) => {
 })
 
 /// read ///
-server.get (routes.hubs.GET (), (dn, ro) => {
+server.get (routes.hubs.GET (), (ri, ro) => {
   console.log (`>>> hubs .get <<<`)
   hubsDB
     .find () // returns a promise
