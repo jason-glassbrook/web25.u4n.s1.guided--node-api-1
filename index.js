@@ -2,6 +2,9 @@
 // import express from 'express' // ES2015 modules
 const express = require ('express') // CommonJS modules
 
+/// database ///
+const hubs = require ('./data/hubs-model.js')
+
 /// server ///
 const port = 5555
 const server = express ()
@@ -13,6 +16,7 @@ const server = express ()
 const routes = {
   root : '/',
   home : '/api',
+  hubs : '/api/hubs',
 }
 
 /*******************
@@ -27,7 +31,22 @@ server.get (routes.root, (dn, up) => {
   })
 })
 
-})
+/*******************
+  hubs
+*******************/
+
+/// create ///
+
+
+/// read ///
+
+
+/// update ///
+
+
+/// delete ///
+
+
 /***************************************
   run server
 ***************************************/
