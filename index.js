@@ -24,9 +24,9 @@ const routes = {
 *******************/
 
 /// get ///
-server.get (routes.root, (dn, up) => {
+server.get (routes.root, (ri, ro) => {
   console.log (`>>> root .get <<<`)
-  up.json ({
+  ro.json ({
     message : 'hello world',
   })
 })
@@ -39,20 +39,20 @@ server.get (routes.root, (dn, up) => {
 
 
 /// read ///
-server.get (routes.hubs, (dn, up) => {
+server.get (routes.hubs, (dn, ro) => {
   console.log (`>>> hubs .get <<<`)
   hubs
     .find () // returns a promise
     .then ((data) => {
       console.log (`>>> hubs .get .find .then <<<`)
-      up
+      ro
         .status (200)
         .json (data)
     })
     .catch ((error) => {
       console.log (`>>> get hubs .get .find .catch <<<`)
       console.log (error)
-      up
+      ro
         .status (500)
         .json ({
           error : `sorry, we ran into an error when getting hubs`,
