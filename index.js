@@ -93,8 +93,28 @@ server.get (routes.hubs.GET (), (dn, ro) => {
 
 
 /// delete ///
+server.delete (routes.hubs.DELETE (':id'), (ri, ro) => {
+  console.log (`>>> hubs .delete <<<`)
+  const hubID = ri.params.id
 
   hubsDB
+    .remove (hubData)
+    .then ((deletedHub) => {
+      console.log (`>>> hubs .delete .delete .then <<<`)
+      ro
+        .status (201)
+        .json (deletedHub)
+    })
+    .catch ((error) => {
+      console.log (`>>> hubs .delete .delete .catch <<<`)
+      console.log (error)
+      ro
+        .status (500)
+        .json ({
+          error : `sorry, we ran into an error when posting hubs`,
+        })
+    })
+})
 
 /***************************************
   run server
