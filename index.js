@@ -17,7 +17,12 @@ server.use (express.json ())
 const routes = {
   root : '/',
   home : '/api',
-  hubs : '/api/hubs',
+  hubs : {
+    POST   : () => `/api/hubs`,
+    GET    : () => `/api/hubs`,
+    PUT    : (id) => `/api/hubs/${id}`,
+    DELETE : (id) => `/api/hubs/${id}`,
+  },
 }
 
 /*******************
@@ -37,7 +42,7 @@ server.get (routes.root, (ri, ro) => {
 *******************/
 
 /// create ///
-server.post (routes.hubs, (ri, ro) => {
+server.post (routes.hubs.POST (), (ri, ro) => {
   console.log (`>>> hubs .post <<<`)
   const hubData = ri.body
   // for now, we will trust the data
@@ -62,7 +67,7 @@ server.post (routes.hubs, (ri, ro) => {
 })
 
 /// read ///
-server.get (routes.hubs, (dn, ro) => {
+server.get (routes.hubs.GET (), (dn, ro) => {
   console.log (`>>> hubs .get <<<`)
   hubs
     .find () // returns a promise
